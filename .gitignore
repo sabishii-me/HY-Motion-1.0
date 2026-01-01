@@ -11,6 +11,7 @@ __pycache__/
 cache
 
 .vscode/
+.claude/
 
 ckpts/*
 !ckpts/README.md
@@ -19,3 +20,16 @@ test_*/
 debug
 tencent
 output
+
+# Profile environments (each user creates their own)
+# Keep profile folders and scripts, ignore only generated environments
+venv/
+python_embed/
+
+# Downloaded models (users download themselves)
+downloaded_models/
+
+# Backup and temp files
+*.backup
+*.new
+nul

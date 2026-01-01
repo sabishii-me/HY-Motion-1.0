@@ -535,7 +535,23 @@ if __name__ == "__main__":
     try_to_download_text_encoder()
     # Then download the main model
     final_model_path = try_to_download_model()
-    model_inference = ModelInference(final_model_path, use_prompt_engineering=False, use_text_encoder=True)
-    model_inference.initialize_model(device="cpu")
+
+    # Read quantization from environment variable (set by profile)
+    # Options: "none" (24-26GB), "int8" (12-13GB), "int4" (6-8GB)
+    import os
+    quantization = os.environ.get('HY_QUANTIZATION', 'int4')  # Default to int4 for safety
+    print(f"Using quantization: {quantization}")
+
+    model_inference = ModelInference(final_model_path, use_prompt_engineering=False, use_text_encoder=True, quantization=quantization)
+
+    # Try to use CUDA if available, fallback to CPU
+    import torch
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f">>> Using device: {device}")
+    if device == "cuda":
+        print(f">>> GPU: {torch.cuda.get_device_name(0)}")
+        print(f">>> VRAM: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB")
+
+    model_inference.initialize_model(device=device)
     demo = create_demo(final_model_path)
     demo.launch(server_name="0.0.0.0")

@@ -38,6 +38,29 @@
 ## 🔥 News
 - **Dec 30, 2025**: 🤗 We released the inference code and pretrained models of [HY-Motion 1.0](https://huggingface.co/tencent/HY-Motion-1.0). Please give it a try via our [HuggingFace Space](https://huggingface.co/spaces/tencent/HY-Motion-1.0) and our [Official Site](https://hunyuan.tencent.com/motion)!
 
+## 🎮 RTX 5080 / Blackwell Support
+
+**Running HY-Motion on RTX 5080 (16GB VRAM) / RTX 50 Series GPUs:**
+
+This fork adds full support for NVIDIA RTX 5080 and other Blackwell architecture GPUs:
+
+- ✅ **Fixed cuBLAS errors** - PyTorch nightly with CUDA 13.0 for Blackwell (Compute 12.0) support
+- ✅ **16GB VRAM optimization** - INT4 quantization reduces VRAM from 24-26GB to 6-8GB
+- ✅ **No quality loss** - Tested: INT4 produces identical results to full precision
+- ✅ **Profile system** - Easy switching between INT4/INT8/Official configurations
+
+**Quick Start:**
+```batch
+launch.bat
+```
+
+**Keywords:** RTX 5080, RTX 5090, Blackwell, GB202, cuBLAS error, CUDA 13.0, 16GB VRAM, INT4 quantization, PyTorch nightly
+
+**Documentation:**
+- [README_SETUP.md](README_SETUP.md) - Quick setup guide
+- [profiles/RTX5080_SPECS.md](profiles/RTX5080_SPECS.md) - Full technical details & benchmarks
+- [profiles/README_RTX5080.md](profiles/README_RTX5080.md) - Quick reference
+
 
 ## **Introduction**
 

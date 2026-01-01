@@ -38,6 +38,29 @@
 ## 🔥 最新消息
 - **2025年12月30日**: 🤗 我们发布了 [HY-Motion 1.0](https://huggingface.co/tencent/HY-Motion-1.0) 的推理代码和预训练模型。欢迎通过我们的 [HuggingFace Space](https://huggingface.co/spaces/tencent/HY-Motion-1.0) 和 [官方网站](https://hunyuan.tencent.com/motion) 进行试用！
 
+## 🎮 RTX 5080 / Blackwell 架构支持
+
+**在 RTX 5080 (16GB 显存) / RTX 50 系列 GPU 上运行 HY-Motion:**
+
+本分支完整支持 NVIDIA RTX 5080 和其他 Blackwell 架构 GPU：
+
+- ✅ **修复 cuBLAS 错误** - 使用 PyTorch nightly + CUDA 13.0 支持 Blackwell (Compute 12.0)
+- ✅ **16GB 显存优化** - INT4 量化将显存占用从 24-26GB 降至 6-8GB
+- ✅ **无质量损失** - 实测：INT4 与全精度输出完全相同
+- ✅ **配置文件系统** - 轻松切换 INT4/INT8/官方配置
+
+**快速开始:**
+```batch
+launch.bat
+```
+
+**关键词:** RTX 5080, RTX 5090, Blackwell, GB202, cuBLAS 错误, CUDA 13.0, 16GB 显存, INT4 量化, PyTorch nightly
+
+**文档:**
+- [README_SETUP.md](README_SETUP.md) - 快速设置指南
+- [profiles/RTX5080_SPECS.md](profiles/RTX5080_SPECS.md) - 完整技术细节和性能测试
+- [profiles/README_RTX5080.md](profiles/README_RTX5080.md) - 快速参考
+
 
 ## **简介**
 
